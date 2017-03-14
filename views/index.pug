@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+  body(ng-app='bigBear', ng-controller='MainCtrl')
+    .container
+      .wholeBody
+        h1 Treehouse Checklist
+        p.lead
+          | Use this app to keep up with which Treehouse modules you should complete each week.
+          br
+          |  Course is broken up into 12 weeks.
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(type='text', ng-model='title', placeholder='Add Module or Assignment')
+          .form-group
+            label(for='sel1') Week:
+            |
+            select#sel1.form-control(ng-model='week')
+              option 1
+              option 2
+              option 3
+              option 4
+              option 5
+              option 6
+              option 7
+              option 8
+              option 9
+              option 10
+              option 11
+              option 12
+          |
+          button.btn.btn-success(ng-click='addPost()', type='submit') Submit
+        #parentBtn(role='group row')
+          clickfunctions
+            div(ng-repeat="post in posts | orderBy: 'week'")
+              .btn-group
+                button.btn.btn-success(type='button', ng-click='weekChange(post)') {{post.week}}
+                button.btn.btn-default(type='button') {{post.title}}
